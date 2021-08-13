@@ -1,3 +1,4 @@
+from dip.forms import ColForm
 from typing import ContextManager
 from django.shortcuts import render
 from .models import Columnist,Article
@@ -36,3 +37,17 @@ def articleIndex(request):
         'data':q,
     }
     return render(request,'dip/article_index.html',context)
+
+
+def newColumnist(request):
+    if request.method =="POST":
+        form = ColForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return index(request)
+    else:
+        form = ColForm()
+    context = {
+        'data':form
+    }
+    return render(request,'dip/new_columnist.html',context)
