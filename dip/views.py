@@ -2,6 +2,7 @@ from dip.forms import ColForm
 from typing import ContextManager
 from django.shortcuts import render
 from .models import Columnist,Article
+from .forms import UserFormOmercik
 # Create your views here.
 
 def home(request):
@@ -51,3 +52,19 @@ def newColumnist(request):
         'data':form
     }
     return render(request,'dip/new_columnist.html',context)
+
+
+def register(request):
+    if request.method == "POST":
+        omer_osman_form = UserFormOmercik(request.POST)
+        if omer_osman_form.is_valid():
+            omer_osman_form.save()
+            return home(request)
+    else:
+        omer_osman_form = UserFormOmercik()
+    
+    context = {
+        'data':omer_osman_form,
+    }
+
+    return render(request,'dip/register.html')
