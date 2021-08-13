@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<style>
+    body{
+        background-color: darkslategrey;
+    }
+    a {
+        color: deeppink;
+    }
+    h1{
+        color: khaki;
+    }
+    h2{
+        color: salmon;
+    }
+    li{
+        color: thistle;
+    }
+</style>
+<a href="{% url 'home-page' %}">Home</a>
+<a href="{% url 'index-page' %}">Index</a>
+<a href="{% url 'article-index-page'%}">Articles</a>
+
+
+<hr>
+<body>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
