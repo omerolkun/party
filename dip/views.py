@@ -67,4 +67,4 @@ def register(request):
         'data':omer_osman_form,
     }
 
-    return render(request,'dip/register.html')
+    return render(request,'dip/register.html',context)

@@ -6,5 +6,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home,name='home-page'),
     path('dip/',include('dip.urls')),
-    path('accounts/',include('django.contrib.auth.urls')),
+    #path('accounts/',include('django.contrib.auth.urls')),
 ]
