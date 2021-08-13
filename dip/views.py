@@ -1,8 +1,10 @@
+from django.db import models
 from dip.forms import ColForm
 from typing import ContextManager
 from django.shortcuts import render
 from .models import Columnist,Article
 from .forms import UserFormOmercik
+from django.contrib.auth.models import User
 # Create your views here.
 
 def home(request):
@@ -68,3 +70,10 @@ def register(request):
     }
 
     return render(request,'dip/register.html',context)
+
+def userList(request):
+    q = User.objects.all()
+    context ={
+        'data':q,
+    }
+    return render(request,'dip/userlist.html',context)

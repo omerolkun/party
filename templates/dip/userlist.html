@@ -7,16 +7,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Users</title>
 </head>
 <body>
-    <h1>Register page</h1>
-    
-    <form action="" method="POST">
-        {{data.as_p}}
-        {% csrf_token %}
-        <input type="submit" value="Register">
-    </form>
+    <h1>User List Page</h1>
+    {% for x in data %}
+        <li>
+            {{x.username}}
+        </li>
+    {% endfor %}
 </body>
 </html>
 {% endblock %}
