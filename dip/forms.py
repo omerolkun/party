@@ -1,7 +1,8 @@
 from django import forms
+from django.forms import fields
 from .models import Columnist,Article
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 
 
 class ColForm(forms.ModelForm):
@@ -24,3 +25,7 @@ class UserFormOmercik(UserCreationForm):
 			'password1',
 			'password2',
 		)
+
+class UserFormOmercik2(AuthenticationForm):
+	class Meta:
+		fields = '__all__'

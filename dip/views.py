@@ -1,3 +1,4 @@
+from django.contrib.auth.forms import AuthenticationForm
 from django.db import models
 from dip.forms import ColForm
 from typing import ContextManager
@@ -77,3 +78,13 @@ def userList(request):
         'data':q,
     }
     return render(request,'dip/userlist.html',context)
+
+
+def login(request):
+    if request.method == "POST":
+        q = AuthenticationForm()
+    context = {
+        'data':q,
+    }
+
+    return render(request,'registration/login.html',context)
