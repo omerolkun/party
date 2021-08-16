@@ -4,8 +4,9 @@ from dip.forms import ColForm
 from typing import ContextManager
 from django.shortcuts import render
 from .models import Columnist,Article
-from .forms import UserFormOmercik
+from .forms import UserFormOmercik,UserFormOmercik2
 from django.contrib.auth.models import User
+
 # Create your views here.
 
 def home(request):
@@ -79,12 +80,16 @@ def userList(request):
     }
     return render(request,'dip/userlist.html',context)
 
-
 def login(request):
     if request.method == "POST":
-        q = AuthenticationForm()
-    context = {
-        'data':q,
-    }
+        form = UserFormOmercik2(request.POST)
+        if form.is_valid():
+            form.save()
+            return home(request)
+    else:
+        form = UserFormOmercik2()
 
+    context = {
+        'form':form,
+    }
     return render(request,'registration/login.html',context)
